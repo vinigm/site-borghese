@@ -27,7 +27,7 @@ class RenderizadorImoveis {
 
     // Mensagem padrão do WhatsApp
     const mensagemWhatsApp = `Olá! Tenho interesse no imóvel: ${imovel.titulo} - ${precoFormatado}`;
-    const linkWhatsApp = gerarLinkWhatsApp('11999999999', mensagemWhatsApp);
+    const linkWhatsApp = gerarLinkWhatsApp('51993016930', mensagemWhatsApp);
 
     return `
       <article class="card-imovel" data-imovel-id="${imovel.id}">
