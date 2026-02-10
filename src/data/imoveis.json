@@ -54,9 +54,6 @@
       "destaque": true,
       "disponivel": true
     },
-
-
-
     {
       "id": 2,
       "empreendimentoId": null,
@@ -88,16 +85,12 @@
       "destaque": true,
       "disponivel": true
     },
-
-
-empreendimentoId": null,
+    {
+      "id": 3,
+      "empreendimentoId": null,
       "empreendimento": null,
       "unidade": null,
       "torre": null,
-      "
-
-    {
-      "id": 3,
       "titulo": "Studio Compacto para Estudantes",
       "tipo": "apartamento",
       "transacao": "aluguel",
@@ -120,14 +113,14 @@ empreendimentoId": null,
         "assets/images/imoveis/3/cozinha.jpg"
       ],
       "destaque": false,
-      "empreendimentoId": null,
-      "empreendimento": null,
-      "unidade": null,
-      "torre": null,
       "disponivel": true
     },
     {
       "id": 4,
+      "empreendimentoId": null,
+      "empreendimento": null,
+      "unidade": null,
+      "torre": null,
       "titulo": "Cobertura Duplex com Vista Panorâmica",
       "tipo": "apartamento",
       "transacao": "venda",
@@ -147,11 +140,7 @@ empreendimentoId": null,
       "descricao": "Cobertura de alto padrão com vista deslumbrante da cidade. Terraço gourmet, piscina privativa e acabamento premium. Lazer completo no condomínio.",
       "imagens": [
         "assets/images/imoveis/4/terraco.jpg",
-       empreendimentoId": null,
-      "empreendimento": null,
-      "unidade": null,
-      "torre": null,
-      " "assets/images/imoveis/4/sala.jpg",
+        "assets/images/imoveis/4/sala.jpg",
         "assets/images/imoveis/4/vista.jpg"
       ],
       "destaque": true,
@@ -159,6 +148,10 @@ empreendimentoId": null,
     },
     {
       "id": 5,
+      "empreendimentoId": null,
+      "empreendimento": null,
+      "unidade": null,
+      "torre": null,
       "titulo": "Apartamento 2 Quartos - Ótima Localização",
       "tipo": "apartamento",
       "transacao": "aluguel",
@@ -177,11 +170,7 @@ empreendimentoId": null,
       },
       "descricao": "Apartamento bem localizado, próximo a transporte público e comércio. Prédio com portaria 24h e área de lazer.",
       "imagens": [
-       empreendimentoId": null,
-      "empreendimento": null,
-      "unidade": null,
-      "torre": null,
-      " "assets/images/imoveis/5/sala.jpg",
+        "assets/images/imoveis/5/sala.jpg",
         "assets/images/imoveis/5/quarto.jpg"
       ],
       "destaque": false,
@@ -189,6 +178,10 @@ empreendimentoId": null,
     },
     {
       "id": 6,
+      "empreendimentoId": null,
+      "empreendimento": null,
+      "unidade": null,
+      "torre": null,
       "titulo": "Casa Confortável em Bairro Residencial",
       "tipo": "casa",
       "transacao": "aluguel",
