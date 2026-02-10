@@ -17,6 +17,14 @@ class RenderizadorImoveis {
     const precoFormatado = formatarMoeda(imovel.preco);
     const periodo = imovel.transacao === 'aluguel' ? '/mês' : '';
     const enderecoFormatado = formatarEnderecoCurto(imovel.endereco);
+    const resolverCaminhoImagem = (src) => {
+      if (!src) return 'assets/images/placeholder.jpg';
+      if (src.startsWith('http') || src.startsWith('/') || src.startsWith('../') || src.startsWith('./')) {
+        return src;
+      }
+      const estaEmPages = window.location.pathname.includes('/pages/');
+      return estaEmPages ? `../${src}` : src;
+    };
     
     const badges = [];
     if (imovel.destaque) {
@@ -36,7 +44,7 @@ class RenderizadorImoveis {
       <article class="card-imovel" data-imovel-id="${imovel.id}">
         <div class="card-imovel__imagem-container">
           <img 
-            src="${imovel.imagens[0] || 'assets/images/placeholder.jpg'}" 
+            src="${resolverCaminhoImagem(imovel.imagens && imovel.imagens[0])}" 
             alt="${imovel.titulo}"
             class="card-imovel__imagem"
             loading="lazy"
