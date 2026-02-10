@@ -2,15 +2,15 @@
   "imoveis": [
     {
       "id": 1,
-      "titulo": "Apartamento Moderno no Centro",
+      "titulo": "Apartamento Moderno no Condomínio TOM",
       "tipo": "apartamento",
       "transacao": "venda",
-      "preco": 450000,
+      "preco": 1150000,
       "endereco": {
-        "rua": "Rua das Flores, 123",
-        "bairro": "Centro",
-        "cidade": "São Paulo",
-        "estado": "SP"
+        "rua": "Rua Almirante Gonçalves",
+        "bairro": "Menino Deus",
+        "cidade": "Porto Alegre",
+        "estado": "RS"
       },
       "caracteristicas": {
         "quartos": 3,
@@ -18,7 +18,7 @@
         "vagas": 2,
         "area": 95
       },
-      "descricao": "Apartamento moderno com acabamento de primeira qualidade, localizado no coração da cidade. Próximo a comércios, restaurantes e transporte público.",
+      "descricao": "Apartamento moderno com acabamento de primeira qualidade, localizado no coração do bairro Menino Deus. Próximo a comércios, restaurantes e transporte público.",
         "imagens": [
           "assets/images/imoveis/1/academia1.jpeg",
           "assets/images/imoveis/1/academia2.jpeg",
