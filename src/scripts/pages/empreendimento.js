@@ -38,13 +38,13 @@ function criarGaleriaEmpreendimento(imagens, nome) {
   
   return `
     <div class="empreendimento__galeria">
-      <div class="empreendimento__imagem-principal">
-        <img src="${imagemPrincipal}" alt="${nome}">
+      <div class="empreendimento__imagem-principal" id="imagem-principal-emp">
+        <img src="${imagemPrincipal}" alt="${nome}" data-index="0">
       </div>
       ${imagens.length > 1 ? `
-        <div class="empreendimento__miniaturas">
-          ${imagens.slice(0, 4).map((img, index) => `
-            <div class="empreendimento__miniatura">
+        <div class="empreendimento__miniaturas" id="miniaturas-emp">
+          ${imagens.map((img, index) => `
+            <div class="empreendimento__miniatura${index === 0 ? ' ativo' : ''}" data-index="${index}">
               <img src="${resolverCaminhoImagem(img)}" alt="${nome} - ${index + 1}">
             </div>
           `).join('')}
@@ -164,6 +164,36 @@ async function carregarEmpreendimento() {
         </div>
       </div>
     `;
+
+    // Adiciona funcionalidade de troca de imagens na galeria
+    setTimeout(() => {
+      const imagemPrincipal = document.getElementById('imagem-principal-emp');
+      const miniaturas = document.querySelectorAll('.empreendimento__miniatura');
+      
+      if (imagemPrincipal && miniaturas.length > 0) {
+        const resolverCaminhoImagem = (src) => {
+          if (!src) return 'assets/images/placeholder.jpg';
+          if (src.startsWith('http') || src.startsWith('/') || src.startsWith('../') || src.startsWith('./')) {
+            return src;
+          }
+          return `../${src}`;
+        };
+
+        miniaturas.forEach((miniatura, index) => {
+          miniatura.addEventListener('click', () => {
+            const imgElement = imagemPrincipal.querySelector('img');
+            if (imgElement && empreendimento.imagens[index]) {
+              imgElement.src = resolverCaminhoImagem(empreendimento.imagens[index]);
+              imgElement.setAttribute('data-index', index);
+              
+              // Remove classe ativo de todas e adiciona na clicada
+              miniaturas.forEach(m => m.classList.remove('ativo'));
+              miniatura.classList.add('ativo');
+            }
+          });
+        });
+      }
+    }, 100);
 
     // Carrega unidades do empreendimento
     await carregarUnidades(empreendimento.id);

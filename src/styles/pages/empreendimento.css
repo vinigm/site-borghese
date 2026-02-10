@@ -75,8 +75,30 @@
 
 .empreendimento__miniaturas {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: var(--espacamento-sm);
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: var(--espacamento-xs);
+}
+
+/* Scrollbar customizada */
+.empreendimento__miniaturas::-webkit-scrollbar {
+  width: 8px;
+}
+
+.empreendimento__miniaturas::-webkit-scrollbar-track {
+  background: var(--cor-fundo-alternativo);
+  border-radius: var(--borda-radius-sm);
+}
+
+.empreendimento__miniaturas::-webkit-scrollbar-thumb {
+  background: var(--cor-primaria);
+  border-radius: var(--borda-radius-sm);
+}
+
+.empreendimento__miniaturas::-webkit-scrollbar-thumb:hover {
+  background: var(--cor-primaria-escura);
 }
 
 .empreendimento__miniatura {
@@ -84,11 +106,20 @@
   border-radius: var(--borda-radius-md);
   overflow: hidden;
   cursor: pointer;
-  transition: transform var(--transicao-rapida);
+  transition: all var(--transicao-rapida);
+  border: 3px solid transparent;
+  opacity: 0.7;
 }
 
 .empreendimento__miniatura:hover {
   transform: scale(1.05);
+  opacity: 1;
+}
+
+.empreendimento__miniatura.ativo {
+  border-color: var(--cor-primaria);
+  opacity: 1;
+  box-shadow: 0 0 0 2px var(--cor-primaria-clara);
 }
 
 .empreendimento__miniatura img {
