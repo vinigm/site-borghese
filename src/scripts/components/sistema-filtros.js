@@ -111,6 +111,12 @@ class SistemaFiltros {
       filtros.transacao = transacao;
     }
 
+    // Empreendimento
+    const empreendimento = formData.get('empreendimento');
+    if (empreendimento && empreendimento !== 'todos') {
+      filtros.empreendimento = empreendimento;
+    }
+
     // Preço mínimo e máximo
     const precoMin = formData.get('precoMin');
     if (precoMin && precoMin !== '') {
@@ -243,6 +249,10 @@ class SistemaFiltros {
 
     if (this.filtros.transacao) {
       tags.push(this.criarTag('transacao', `Transação: ${this.capitalizarTransacao(this.filtros.transacao)}`));
+    }
+
+    if (this.filtros.empreendimento) {
+      tags.push(this.criarTag('empreendimento', `Empreendimento: ${this.filtros.empreendimento}`));
     }
 
     if (this.filtros.precoMin || this.filtros.precoMax) {

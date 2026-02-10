@@ -75,6 +75,31 @@
     </div>
   </section>
 
+  <!-- EMPREENDIMENTOS EM DESTAQUE -->
+  <section class="empreendimentos-destaque secao--cinza">
+    <div class="empreendimentos-destaque__container">
+      <div class="secao__header">
+        <h2 class="secao__titulo">Empreendimentos em Destaque</h2>
+        <p class="secao__subtitulo">
+          Conheça nossos principais empreendimentos
+        </p>
+      </div>
+
+      <div class="empreendimentos-grid" id="empreendimentos-container">
+        <!-- Empreendimentos serão carregados via JavaScript -->
+        <div class="loading-container">
+          <div class="loading-spinner loading-spinner--large"></div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="pages/empreendimentos.html" class="botao botao--outline botao--grande">
+          Ver Todos os Empreendimentos →
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- DESTAQUES -->
   <section class="destaques">
     <div class="destaques__container">
@@ -261,6 +286,66 @@
       }
     }
 
+    // Carrega empreendimentos em destaque
+    async function carregarEmpreendimentos() {
+      try {
+        const empreendimentos = await carregadorDados.carregarEmpreendimentosDestaque();
+        const container = document.getElementById('empreendimentos-container');
+        
+        if (!container) return;
+
+        if (empreendimentos.length === 0) {
+          container.innerHTML = '<p style="text-align: center; color: var(--cor-texto-secundario);">Nenhum empreendimento em destaque no momento.</p>';
+          return;
+        }
+
+        const resolverCaminhoImagem = (src) => {
+          if (!src) return 'assets/images/placeholder.jpg';
+          return src;
+        };
+
+        const html = empreendimentos.slice(0, 3).map(emp => `
+          <div class="card-empreendimento" onclick="window.location.href='pages/empreendimento.html?id=${emp.id}'">
+            <div class="card-empreendimento__imagem">
+              <img src="${resolverCaminhoImagem(emp.imagens?.[0])}" alt="${emp.nome}" loading="lazy">
+              ${emp.caracteristicas?.status ? `
+                <span class="card-empreendimento__badge">${formatarStatus(emp.caracteristicas.status)}</span>
+              ` : ''}
+            </div>
+            <div class="card-empreendimento__conteudo">
+              <h3 class="card-empreendimento__titulo">${emp.nome}</h3>
+              <div class="card-empreendimento__endereco">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>${emp.endereco.bairro}, ${emp.endereco.cidade}</span>
+              </div>
+              <p class="card-empreendimento__descricao">${emp.descricao}</p>
+              <div class="card-empreendimento__footer">
+                <span class="card-empreendimento__info">${emp.caracteristicas?.unidades || 0} unidades</span>
+                <span class="card-empreendimento__cta">Ver detalhes →</span>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        container.innerHTML = html;
+      } catch (erro) {
+        console.error('Erro ao carregar empreendimentos:', erro);
+      }
+    }
+
+    function formatarStatus(status) {
+      const statusMap = {
+        'em-construcao': 'Em Construção',
+        'lancamento': 'Lançamento',
+        'pronto-para-morar': 'Pronto para Morar',
+        'na-planta': 'Na Planta'
+      };
+      return statusMap[status] || status;
+    }
+
     // Busca rápida
     document.getElementById('btn-busca-rapida').addEventListener('click', () => {
       const busca = document.getElementById('busca-rapida').value;
@@ -275,6 +360,7 @@
 
     // Inicializa
     carregarDestaques();
+    carregarEmpreendimentos();
   </script>
   <script type="module" src="src/scripts/main.js"></script>
 </body>

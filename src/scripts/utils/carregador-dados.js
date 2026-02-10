@@ -122,6 +122,17 @@ class CarregadorDados {
       imoveis = imoveis.filter(imovel => imovel.transacao === filtros.transacao);
     }
 
+    // Filtro por empreendimento
+    if (filtros.empreendimentoId) {
+      imoveis = imoveis.filter(imovel => 
+        imovel.empreendimentoId === parseInt(filtros.empreendimentoId)
+      );
+    }
+
+    if (filtros.empreendimento && filtros.empreendimento !== 'todos') {
+      imoveis = imoveis.filter(imovel => imovel.empreendimento === filtros.empreendimento);
+    }
+
     if (filtros.precoMin !== undefined) {
       imoveis = imoveis.filter(imovel => imovel.preco >= filtros.precoMin);
     }
@@ -237,6 +248,36 @@ class CarregadorDados {
   limparCache() {
     this.cache.clear();
     console.log('🧹 Cache limpo');
+  }
+
+  /**
+   * Carrega todos os empreendimentos
+   * @returns {Promise<Array>} - Array de empreendimentos
+   */
+  async carregarEmpreendimentos() {
+    const dados = await this.carregarJSON('src/data/empreendimentos.json');
+    return dados.empreendimentos || [];
+  }
+
+  /**
+   * Carrega empreendimentos em destaque
+   * @returns {Promise<Array>} - Array de empreendimentos em destaque
+   */
+  async carregarEmpreendimentosDestaque() {
+    const empreendimentos = await this.carregarEmpreendimentos();
+    return empreendimentos.filter(emp => emp.destaque && emp.disponivel);
+  }
+
+  /**
+   * Carrega um empreendimento específico por ID ou slug
+   * @param {number|string} idOuSlug - ID ou slug do empreendimento
+   * @returns {Promise<Object|null>} - Empreendimento ou null
+   */
+  async carregarEmpreendimentoPorId(idOuSlug) {
+    const empreendimentos = await this.carregarEmpreendimentos();
+    return empreendimentos.find(emp => 
+      emp.id === parseInt(idOuSlug) || emp.slug === idOuSlug
+    ) || null;
   }
 
   /**

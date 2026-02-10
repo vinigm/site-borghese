@@ -90,6 +90,139 @@
   margin: 0 auto;
 }
 
+/* === EMPREENDIMENTOS DESTAQUE === */
+.empreendimentos-destaque {
+  padding: var(--espacamento-3xl) var(--espacamento-lg);
+  background-color: var(--cor-fundo-alternativo);
+}
+
+.empreendimentos-destaque__container {
+  max-width: var(--largura-maxima-conteudo);
+  margin: 0 auto;
+}
+
+.empreendimentos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--espacamento-xl);
+  margin-top: var(--espacamento-xl);
+}
+
+.card-empreendimento {
+  background-color: var(--cor-fundo);
+  border-radius: var(--borda-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--sombra-md);
+  transition: all var(--transicao-normal);
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-empreendimento:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-xl);
+}
+
+.card-empreendimento__imagem {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background-color: var(--cor-fundo-escuro);
+}
+
+.card-empreendimento__imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transicao-lenta);
+}
+
+.card-empreendimento:hover .card-empreendimento__imagem img {
+  transform: scale(1.1);
+}
+
+.card-empreendimento__badge {
+  position: absolute;
+  top: var(--espacamento-md);
+  left: var(--espacamento-md);
+  padding: var(--espacamento-xs) var(--espacamento-sm);
+  background-color: var(--cor-secundaria);
+  color: var(--cor-fundo);
+  font-size: var(--texto-xs);
+  font-weight: var(--font-semibold);
+  border-radius: var(--borda-radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-empreendimento__conteudo {
+  padding: var(--espacamento-lg);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-empreendimento__titulo {
+  font-size: var(--texto-xl);
+  font-weight: var(--font-semibold);
+  color: var(--cor-texto-principal);
+  margin-bottom: var(--espacamento-sm);
+}
+
+.card-empreendimento__endereco {
+  display: flex;
+  align-items: center;
+  gap: var(--espacamento-xs);
+  color: var(--cor-texto-secundario);
+  font-size: var(--texto-sm);
+  margin-bottom: var(--espacamento-md);
+}
+
+.card-empreendimento__endereco svg {
+  color: var(--cor-primaria);
+  flex-shrink: 0;
+}
+
+.card-empreendimento__descricao {
+  font-size: var(--texto-sm);
+  color: var(--cor-texto-secundario);
+  line-height: 1.6;
+  margin-bottom: var(--espacamento-md);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-empreendimento__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: var(--espacamento-md);
+  border-top: 1px solid var(--cor-borda);
+}
+
+.card-empreendimento__info {
+  font-size: var(--texto-sm);
+  color: var(--cor-texto-secundario);
+  font-weight: var(--font-medium);
+}
+
+.card-empreendimento__cta {
+  font-size: var(--texto-sm);
+  color: var(--cor-primaria);
+  font-weight: var(--font-semibold);
+  transition: gap var(--transicao-rapida);
+}
+
+.card-empreendimento:hover .card-empreendimento__cta {
+  color: var(--cor-primaria-escura);
+}
+
 .secao__header {
   text-align: center;
   margin-bottom: var(--espacamento-2xl);

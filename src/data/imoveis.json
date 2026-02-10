@@ -2,6 +2,10 @@
   "imoveis": [
     {
       "id": 1,
+      "empreendimentoId": 1,
+      "empreendimento": "Condomínio TOM",
+      "unidade": "804",
+      "torre": null,
       "titulo": "Condomínio TOM - 2 Quartos",
       "tipo": "apartamento",
       "transacao": "venda",
@@ -55,6 +59,10 @@
 
     {
       "id": 2,
+      "empreendimentoId": null,
+      "empreendimento": null,
+      "unidade": null,
+      "torre": null,
       "titulo": "Casa Espaçosa com Quintal",
       "tipo": "casa",
       "transacao": "venda",
@@ -82,7 +90,11 @@
     },
 
 
-
+empreendimentoId": null,
+      "empreendimento": null,
+      "unidade": null,
+      "torre": null,
+      "
 
     {
       "id": 3,
@@ -108,6 +120,10 @@
         "assets/images/imoveis/3/cozinha.jpg"
       ],
       "destaque": false,
+      "empreendimentoId": null,
+      "empreendimento": null,
+      "unidade": null,
+      "torre": null,
       "disponivel": true
     },
     {
@@ -131,7 +147,11 @@
       "descricao": "Cobertura de alto padrão com vista deslumbrante da cidade. Terraço gourmet, piscina privativa e acabamento premium. Lazer completo no condomínio.",
       "imagens": [
         "assets/images/imoveis/4/terraco.jpg",
-        "assets/images/imoveis/4/sala.jpg",
+       empreendimentoId": null,
+      "empreendimento": null,
+      "unidade": null,
+      "torre": null,
+      " "assets/images/imoveis/4/sala.jpg",
         "assets/images/imoveis/4/vista.jpg"
       ],
       "destaque": true,
@@ -157,7 +177,11 @@
       },
       "descricao": "Apartamento bem localizado, próximo a transporte público e comércio. Prédio com portaria 24h e área de lazer.",
       "imagens": [
-        "assets/images/imoveis/5/sala.jpg",
+       empreendimentoId": null,
+      "empreendimento": null,
+      "unidade": null,
+      "torre": null,
+      " "assets/images/imoveis/5/sala.jpg",
         "assets/images/imoveis/5/quarto.jpg"
       ],
       "destaque": false,

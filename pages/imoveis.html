@@ -103,6 +103,18 @@
               </select>
             </div>
 
+            <!-- Empreendimento -->
+            <div class="filtros__campo">
+              <label class="filtros__label" for="empreendimento">
+                <span>🏗️</span>
+                Empreendimento
+              </label>
+              <select class="filtros__select" id="empreendimento" name="empreendimento">
+                <option value="todos">Todos</option>
+                <!-- Opções serão carregadas via JavaScript -->
+              </select>
+            </div>
+
             <!-- Faixa de Preço -->
             <div class="filtros__campo">
               <label class="filtros__label">
@@ -335,6 +347,7 @@
   <!-- JavaScript -->
   <script type="module">
     import sistemaFiltros from '../src/scripts/components/sistema-filtros.js';
+    import carregadorDados from '../src/scripts/utils/carregador-dados.js';
 
     const urlParams = new URLSearchParams(window.location.search);
     const resetFiltros = urlParams.get('reset');
@@ -344,23 +357,48 @@
       if (formReset) formReset.reset();
     }
 
-    // Inicializa sistema de filtros
-    sistemaFiltros.inicializar('#form-filtros', '#lista-imoveis');
-
-    // Pega parâmetros da URL
-    const tipo = urlParams.get('tipo');
-    const transacao = urlParams.get('transacao');
-    const busca = urlParams.get('busca');
-
-    // Preenche filtros da URL
-    if (tipo) document.getElementById('tipo').value = tipo;
-    if (transacao) document.getElementById('transacao').value = transacao;
-    if (busca) document.getElementById('busca').value = busca;
-
-    // Se há parâmetros, aplica filtros
-    if (tipo || transacao || busca) {
-      setTimeout(() => sistemaFiltros.aplicarFiltros(), 100);
+    // Carrega empreendimentos no select
+    async function carregarEmpreendimentosSelect() {
+      try {
+        const empreendimentos = await carregadorDados.carregarEmpreendimentos();
+        const select = document.getElementById('empreendimento');
+        
+        if (select && empreendimentos.length > 0) {
+          empreendimentos
+            .filter(emp => emp.disponivel)
+            .forEach(emp => {
+              const option = document.createElement('option');
+              option.value = emp.nome;
+              option.textContent = emp.nome;
+              select.appendChild(option);
+            });
+        }
+      } catch (erro) {
+        console.error('Erro ao carregar empreendimentos:', erro);
+      }
     }
+
+    // Inicializa sistema de filtros
+    carregarEmpreendimentosSelect().then(() => {
+      sistemaFiltros.inicializar('#form-filtros', '#lista-imoveis');
+
+      // Pega parâmetros da URL
+      const tipo = urlParams.get('tipo');
+      const transacao = urlParams.get('transacao');
+      const busca = urlParams.get('busca');
+      const empreendimento = urlParams.get('empreendimento');
+
+      // Preenche filtros da URL
+      if (tipo) document.getElementById('tipo').value = tipo;
+      if (transacao) document.getElementById('transacao').value = transacao;
+      if (busca) document.getElementById('busca').value = busca;
+      if (empreendimento) document.getElementById('empreendimento').value = empreendimento;
+
+      // Se há parâmetros, aplica filtros
+      if (tipo || transacao || busca || empreendimento) {
+        setTimeout(() => sistemaFiltros.aplicarFiltros(), 100);
+      }
+    });
 
     // Ordenação
     document.getElementById('ordenacao').addEventListener('change', (e) => {
