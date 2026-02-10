@@ -82,7 +82,7 @@
 /* === SEÇÃO DE DESTAQUES === */
 .destaques {
   padding: var(--espacamento-3xl) var(--espacamento-lg);
-  background-color: var(--cor-fundo-alternativo);
+  background-color: var(--cor-fundo-imoveis);
 }
 
 .destaques__container {
@@ -93,7 +93,7 @@
 /* === EMPREENDIMENTOS DESTAQUE === */
 .empreendimentos-destaque {
   padding: var(--espacamento-3xl) var(--espacamento-lg);
-  background-color: var(--cor-fundo-alternativo);
+  background-color: var(--cor-fundo-empreendimentos);
 }
 
 .empreendimentos-destaque__container {

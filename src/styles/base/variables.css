@@ -22,6 +22,8 @@
   --cor-fundo: #ffffff;              /* Branco */
   --cor-fundo-alternativo: #f9fafb;  /* Cinza muito claro */
   --cor-fundo-escuro: #f3f4f6;       /* Cinza claro */
+  --cor-fundo-empreendimentos: #eef4ff; /* Azul muito claro */
+  --cor-fundo-imoveis: #f9fafb;      /* Fundo neutro */
   
   --cor-borda: #e5e7eb;              /* Cinza para bordas */
   --cor-sombra: rgba(0, 0, 0, 0.1);  /* Sombra padrão */
