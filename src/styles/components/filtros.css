@@ -171,14 +171,15 @@
   gap: var(--espacamento-md);
   grid-column: 1 / -1;
   margin-top: var(--espacamento-md);
+  flex-wrap: wrap;
 }
 
 .filtros__botao-aplicar {
-  flex: 2;
+  flex: 1 1 100%;
 }
 
 .filtros__botao-limpar {
-  flex: 1;
+  flex: 1 1 100%;
 }
 
 /* === FILTROS ATIVOS === */
