@@ -331,14 +331,26 @@
         };
 
         const html = empreendimentos.slice(0, 3).map(emp => `
-          <div class="card-empreendimento" onclick="window.location.href='pages/empreendimento.html?id=${emp.id}'">
+          <div class="card-empreendimento" data-empreendimento-id="${emp.id}">
             <div class="card-empreendimento__imagem">
-              <img src="${resolverCaminhoImagem(emp.imagens?.[0])}" alt="${emp.nome}" loading="lazy">
+              <img src="${resolverCaminhoImagem(emp.imagens?.[0])}" alt="${emp.nome}" loading="lazy" data-imagem-index="0">
+              ${emp.imagens && emp.imagens.length > 1 ? `
+                <button class="card-empreendimento__nav card-empreendimento__nav--prev" data-emp-id="${emp.id}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+                <button class="card-empreendimento__nav card-empreendimento__nav--next" data-emp-id="${emp.id}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              ` : ''}
               ${emp.caracteristicas?.status ? `
                 <span class="card-empreendimento__badge">${formatarStatus(emp.caracteristicas.status)}</span>
               ` : ''}
             </div>
-            <div class="card-empreendimento__conteudo">
+            <div class="card-empreendimento__conteudo" onclick="window.location.href='pages/empreendimento.html?id=${emp.id}'">
               <h3 class="card-empreendimento__titulo">${emp.nome}</h3>
               <div class="card-empreendimento__endereco">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -357,6 +369,12 @@
         `).join('');
 
         container.innerHTML = html;
+        
+        // Armazenar dados globalmente para navegação
+        window.empreendimentosData = empreendimentos;
+        
+        // Adicionar navegação de imagens
+        adicionarNavegacaoImagensEmpreendimentos(container);
       } catch (erro) {
         console.error('Erro ao carregar empreendimentos:', erro);
       }
@@ -370,6 +388,56 @@
         'na-planta': 'Na Planta'
       };
       return statusMap[status] || status;
+    }
+
+    // Função para adicionar navegação de imagens nos empreendimentos
+    function adicionarNavegacaoImagensEmpreendimentos(container) {
+      const resolverCaminhoImagem = (src) => {
+        if (!src) return 'assets/images/placeholder.jpg';
+        return src;
+      };
+
+      // Navegação anterior
+      container.querySelectorAll('.card-empreendimento__nav--prev').forEach(botao => {
+        botao.addEventListener('click', (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          
+          const card = botao.closest('.card-empreendimento');
+          const img = card.querySelector('.card-empreendimento__imagem img');
+          const empId = card.dataset.empreendimentoId;
+          const emp = window.empreendimentosData?.find(e => e.id == empId);
+          
+          if (!emp || !emp.imagens) return;
+          
+          let currentIndex = parseInt(img.dataset.imagemIndex) || 0;
+          currentIndex = (currentIndex - 1 + emp.imagens.length) % emp.imagens.length;
+          
+          img.src = resolverCaminhoImagem(emp.imagens[currentIndex]);
+          img.dataset.imagemIndex = currentIndex;
+        });
+      });
+
+      // Navegação próxima
+      container.querySelectorAll('.card-empreendimento__nav--next').forEach(botao => {
+        botao.addEventListener('click', (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          
+          const card = botao.closest('.card-empreendimento');
+          const img = card.querySelector('.card-empreendimento__imagem img');
+          const empId = card.dataset.empreendimentoId;
+          const emp = window.empreendimentosData?.find(e => e.id == empId);
+          
+          if (!emp || !emp.imagens) return;
+          
+          let currentIndex = parseInt(img.dataset.imagemIndex) || 0;
+          currentIndex = (currentIndex + 1) % emp.imagens.length;
+          
+          img.src = resolverCaminhoImagem(emp.imagens[currentIndex]);
+          img.dataset.imagemIndex = currentIndex;
+        });
+      });
     }
 
     // Busca rápida
