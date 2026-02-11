@@ -9,6 +9,73 @@ import { formatarEndereco, gerarLinkWhatsApp } from '../utils/helpers.js';
 const container = document.querySelector('#empreendimento .empreendimento__container');
 const tituloEl = document.querySelector('[data-titulo-empreendimento]');
 const breadcrumbEl = document.querySelector('[data-breadcrumb-empreendimento]');
+let lightboxState = null;
+
+function criarLightbox() {
+  if (document.querySelector('.empreendimento__lightbox')) return;
+
+  const lightbox = document.createElement('div');
+  lightbox.className = 'empreendimento__lightbox';
+  lightbox.innerHTML = `
+    <div class="empreendimento__lightbox-conteudo" role="dialog" aria-modal="true">
+      <button class="empreendimento__lightbox-fechar" aria-label="Fechar">&times;</button>
+      <button class="empreendimento__lightbox-seta empreendimento__lightbox-seta--esq" aria-label="Imagem anterior">&#8592;</button>
+      <img class="empreendimento__lightbox-imagem" src="" alt="">
+      <button class="empreendimento__lightbox-seta empreendimento__lightbox-seta--dir" aria-label="Proxima imagem">&#8594;</button>
+    </div>
+  `;
+
+  document.body.appendChild(lightbox);
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      fecharLightbox();
+    }
+  });
+
+  lightbox.querySelector('.empreendimento__lightbox-fechar').addEventListener('click', fecharLightbox);
+  lightbox.querySelector('.empreendimento__lightbox-seta--esq').addEventListener('click', () => trocarLightbox(-1));
+  lightbox.querySelector('.empreendimento__lightbox-seta--dir').addEventListener('click', () => trocarLightbox(1));
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('ativo')) return;
+    if (e.key === 'Escape') fecharLightbox();
+    if (e.key === 'ArrowLeft') trocarLightbox(-1);
+    if (e.key === 'ArrowRight') trocarLightbox(1);
+  });
+}
+
+function abrirLightbox(indice) {
+  const lightbox = document.querySelector('.empreendimento__lightbox');
+  if (!lightbox || !lightboxState) return;
+  lightboxState.indice = indice;
+  atualizarLightbox();
+  lightbox.classList.add('ativo');
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharLightbox() {
+  const lightbox = document.querySelector('.empreendimento__lightbox');
+  if (!lightbox) return;
+  lightbox.classList.remove('ativo');
+  document.body.style.overflow = '';
+}
+
+function trocarLightbox(delta) {
+  if (!lightboxState) return;
+  const total = lightboxState.imagens.length;
+  if (!total) return;
+  lightboxState.indice = (lightboxState.indice + delta + total) % total;
+  atualizarLightbox();
+}
+
+function atualizarLightbox() {
+  const lightbox = document.querySelector('.empreendimento__lightbox');
+  if (!lightbox || !lightboxState) return;
+  const img = lightbox.querySelector('.empreendimento__lightbox-imagem');
+  img.src = lightboxState.imagens[lightboxState.indice];
+  img.alt = lightboxState.titulo;
+}
 
 function renderizarErro(titulo, mensagem) {
   if (!container) return;
@@ -165,19 +232,33 @@ async function carregarEmpreendimento() {
       </div>
     `;
 
+    // Configura lightbox
+    criarLightbox();
+    const resolverCaminhoImagem = (src) => {
+      if (!src) return 'assets/images/placeholder.jpg';
+      if (src.startsWith('http') || src.startsWith('/') || src.startsWith('../') || src.startsWith('./')) {
+        return src;
+      }
+      return `../${src}`;
+    };
+
+    lightboxState = {
+      imagens: empreendimento.imagens.map(img => resolverCaminhoImagem(img)),
+      titulo: empreendimento.nome,
+      indice: 0
+    };
+
     // Adiciona funcionalidade de troca de imagens na galeria
     setTimeout(() => {
       const imagemPrincipal = document.getElementById('imagem-principal-emp');
       const miniaturas = document.querySelectorAll('.empreendimento__miniatura');
       
       if (imagemPrincipal && miniaturas.length > 0) {
-        const resolverCaminhoImagem = (src) => {
-          if (!src) return 'assets/images/placeholder.jpg';
-          if (src.startsWith('http') || src.startsWith('/') || src.startsWith('../') || src.startsWith('./')) {
-            return src;
-          }
-          return `../${src}`;
-        };
+        // Clique na imagem principal abre lightbox
+        imagemPrincipal.addEventListener('click', () => {
+          const indice = parseInt(imagemPrincipal.querySelector('img').getAttribute('data-index') || '0');
+          abrirLightbox(indice);
+        });
 
         miniaturas.forEach((miniatura, index) => {
           miniatura.addEventListener('click', () => {
