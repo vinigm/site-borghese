@@ -281,21 +281,49 @@ class CarregadorDados {
   }
 
   /**
-   * Simula envio de formulário de contato
+   * Envia formulário de contato via FormSubmit
    * @param {Object} dados - Dados do formulário
-   * @returns {Promise<Object>} - Resposta simulada
+   * @returns {Promise<Object>} - Resposta do servidor
    */
   async enviarContato(dados) {
-    // Simulação de envio (em produção, isso seria uma requisição real)
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        console.log('📧 Formulário enviado:', dados);
-        resolve({
+    try {
+      // FormSubmit - Serviço gratuito de envio de emails
+      // Email configurado: borgheseimoveis@gmail.com
+      const formData = new FormData();
+      
+      formData.append('name', dados.nome);
+      formData.append('email', dados.email);
+      formData.append('phone', dados.telefone);
+      formData.append('subject', dados.assunto);
+      formData.append('message', dados.mensagem);
+      formData.append('_captcha', 'false'); // Desabilita captcha
+      formData.append('_template', 'table'); // Template limpo
+      
+      const response = await fetch('https://formsubmit.co/borgheseimoveis@gmail.com', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        console.log('✅ Email enviado com sucesso!');
+        return {
           sucesso: true,
           mensagem: 'Mensagem enviada com sucesso! Entraremos em contato em breve.'
-        });
-      }, 1000);
-    });
+        };
+      } else {
+        throw new Error('Erro ao enviar email');
+      }
+      
+    } catch (erro) {
+      console.error('❌ Erro ao enviar email:', erro);
+      return {
+        sucesso: false,
+        mensagem: 'Erro ao enviar mensagem. Por favor, tente pelo WhatsApp.'
+      };
+    }
   }
 }
 
