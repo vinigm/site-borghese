@@ -55,155 +55,74 @@
       "disponivel": true
     },
     {
-      "id": 2,
+      "id": 7,
       "empreendimentoId": null,
       "empreendimento": null,
       "unidade": null,
       "torre": null,
-      "titulo": "Casa Espaçosa com Quintal",
-      "tipo": "casa",
+      "titulo": "Apartamento com 4 Quartos e 6 Banheiros - Mont'Serrat",
+      "tipo": "apartamento",
       "transacao": "venda",
-      "preco": 850000,
+      "preco": 4489900,
       "endereco": {
-        "rua": "Av. Principal, 456",
-        "bairro": "Jardim América",
-        "cidade": "São Paulo",
-        "estado": "SP"
+        "rua": "Rua Comendador Rheingantz, 696",
+        "bairro": "Mont Serrat",
+        "cidade": "Porto Alegre",
+        "estado": "RS"
       },
       "caracteristicas": {
         "quartos": 4,
-        "banheiros": 3,
-        "vagas": 3,
-        "area": 250
+        "banheiros": 6,
+        "vagas": 6,
+        "area": 373,
+        "suites": 4,
+        "aceitaAnimais": true,
+        "piscina": true,
+        "elevador": true,
+        "salaoFestas": true,
+        "jardim": true,
+        "hallPrivativo": true,
+        "deposito": true,
+        "churrasqueira": true,
+        "espacoGourmet": true,
+        "dependenciaEmpregada": true,
+        "closet": true,
+        "lareira": true,
+        "spa": true,
+        "fitness": true,
+        "portaria24h": true
       },
-      "descricao": "Linda casa em condomínio fechado, com amplo quintal, churrasqueira e piscina. Perfeita para famílias que buscam conforto e segurança.",
+      "descricao": "Apartamento 1 por andar, hall privativo, 4 suítes transformadas em 3 amplas suítes, a master com banheiro e closet ele e ela, living para 4 ambientes com lareira, sala de jantar com espaço gourmet e churrasqueira, copa-cozinha, dependência completa de empregada. 4 vagas de garagem mais depósito. Edifício com infraestrutura, piscina adulto e infantil, salão de festas, spa, fitness e portaria 24h. No coração do bairro Bela Vista, próximo a Praça da Encol e ao GNU. Não deixe esta oportunidade escapar!",
       "imagens": [
-        "assets/images/imoveis/2/frente.jpg",
-        "assets/images/imoveis/2/quintal.jpg",
-        "assets/images/imoveis/2/piscina.jpg"
+        "assets/images/imoveis/jonatan_eso/1/1.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_002.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_004.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_005.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_013.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_016.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_017.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_018.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_022.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_023.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_024.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_025.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_026.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_030.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_031.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_032.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_034.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_037.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_040.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_042.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_045.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_048.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_051.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_054.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_058.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_063.jpg",
+        "assets/images/imoveis/jonatan_eso/1/ONE24639_064.jpg"
       ],
       "destaque": true,
-      "disponivel": true
-    },
-    {
-      "id": 3,
-      "empreendimentoId": null,
-      "empreendimento": null,
-      "unidade": null,
-      "torre": null,
-      "titulo": "Studio Compacto para Estudantes",
-      "tipo": "apartamento",
-      "transacao": "aluguel",
-      "preco": 1800,
-      "endereco": {
-        "rua": "Rua Universitária, 789",
-        "bairro": "Vila Madalena",
-        "cidade": "São Paulo",
-        "estado": "SP"
-      },
-      "caracteristicas": {
-        "quartos": 1,
-        "banheiros": 1,
-        "vagas": 0,
-        "area": 35
-      },
-      "descricao": "Studio perfeito para estudantes ou profissionais solteiros. Totalmente mobiliado, com internet inclusa. Próximo ao metrô e universidades.",
-      "imagens": [
-        "assets/images/imoveis/3/geral.jpg",
-        "assets/images/imoveis/3/cozinha.jpg"
-      ],
-      "destaque": false,
-      "disponivel": true
-    },
-    {
-      "id": 4,
-      "empreendimentoId": null,
-      "empreendimento": null,
-      "unidade": null,
-      "torre": null,
-      "titulo": "Cobertura Duplex com Vista Panorâmica",
-      "tipo": "apartamento",
-      "transacao": "venda",
-      "preco": 1200000,
-      "endereco": {
-        "rua": "Av. Paulista, 2000",
-        "bairro": "Bela Vista",
-        "cidade": "São Paulo",
-        "estado": "SP"
-      },
-      "caracteristicas": {
-        "quartos": 4,
-        "banheiros": 4,
-        "vagas": 4,
-        "area": 320
-      },
-      "descricao": "Cobertura de alto padrão com vista deslumbrante da cidade. Terraço gourmet, piscina privativa e acabamento premium. Lazer completo no condomínio.",
-      "imagens": [
-        "assets/images/imoveis/4/terraco.jpg",
-        "assets/images/imoveis/4/sala.jpg",
-        "assets/images/imoveis/4/vista.jpg"
-      ],
-      "destaque": true,
-      "disponivel": true
-    },
-    {
-      "id": 5,
-      "empreendimentoId": null,
-      "empreendimento": null,
-      "unidade": null,
-      "torre": null,
-      "titulo": "Apartamento 2 Quartos - Ótima Localização",
-      "tipo": "apartamento",
-      "transacao": "aluguel",
-      "preco": 2500,
-      "endereco": {
-        "rua": "Rua Consolação, 1500",
-        "bairro": "Consolação",
-        "cidade": "São Paulo",
-        "estado": "SP"
-      },
-      "caracteristicas": {
-        "quartos": 2,
-        "banheiros": 1,
-        "vagas": 1,
-        "area": 65
-      },
-      "descricao": "Apartamento bem localizado, próximo a transporte público e comércio. Prédio com portaria 24h e área de lazer.",
-      "imagens": [
-        "assets/images/imoveis/5/sala.jpg",
-        "assets/images/imoveis/5/quarto.jpg"
-      ],
-      "destaque": false,
-      "disponivel": true
-    },
-    {
-      "id": 6,
-      "empreendimentoId": null,
-      "empreendimento": null,
-      "unidade": null,
-      "torre": null,
-      "titulo": "Casa Confortável em Bairro Residencial",
-      "tipo": "casa",
-      "transacao": "aluguel",
-      "preco": 3500,
-      "endereco": {
-        "rua": "Rua Tranquila, 321",
-        "bairro": "Morumbi",
-        "cidade": "São Paulo",
-        "estado": "SP"
-      },
-      "caracteristicas": {
-        "quartos": 3,
-        "banheiros": 2,
-        "vagas": 2,
-        "area": 180
-      },
-      "descricao": "Casa em excelente estado, com jardim e garagem coberta. Bairro tranquilo e familiar, com ótima infraestrutura.",
-      "imagens": [
-        "assets/images/imoveis/6/frente.jpg",
-        "assets/images/imoveis/6/jardim.jpg"
-      ],
-      "destaque": false,
       "disponivel": true
     }
   ],

@@ -169,6 +169,71 @@
   flex-shrink: 0;
 }
 
+/* === BANNER DE CONTATO === */
+.empreendimento__banner-contato {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-radius: var(--borda-radius-lg);
+  padding: var(--espacamento-lg);
+  margin: var(--espacamento-md) 0;
+  border-left: 4px solid #2196f3;
+}
+
+.banner-contato__conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacamento-md);
+  flex-wrap: wrap;
+}
+
+.banner-contato__texto {
+  font-size: var(--texto-lg);
+  font-weight: 600;
+  color: #1565c0;
+  flex: 1;
+  min-width: 250px;
+}
+
+.banner-contato__botao {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacamento-sm);
+  background: #25d366;
+  color: white;
+  padding: var(--espacamento-md) var(--espacamento-xl);
+  border-radius: var(--borda-radius-md);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+}
+
+.banner-contato__botao:hover {
+  background: #20ba5a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+}
+
+.banner-contato__botao svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .banner-contato__conteudo {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .banner-contato__texto {
+    min-width: 100%;
+  }
+
+  .banner-contato__botao {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 .empreendimento__descricao {
   font-size: var(--texto-lg);
   line-height: 1.8;

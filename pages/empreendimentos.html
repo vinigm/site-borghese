@@ -29,6 +29,9 @@
             <a href="imoveis.html" class="nav__link">Imóveis</a>
           </li>
           <li class="nav__item">
+            <a href="empreendimentos.html" class="nav__link ativo">Empreendimentos</a>
+          </li>
+          <li class="nav__item">
             <a href="sobre.html" class="nav__link">Sobre</a>
           </li>
           <li class="nav__item">
@@ -239,9 +242,6 @@
               <img src="${resolverCaminhoImagem(emp.imagens?.[0])}" alt="${emp.nome}" loading="lazy">
               ${emp.caracteristicas?.status ? `
                 <span class="card-empreendimento__badge">${formatarStatus(emp.caracteristicas.status)}</span>
-              ` : ''}
-              ${emp.destaque ? `
-                <span class="card-empreendimento__badge card-empreendimento__badge--destaque">⭐ Destaque</span>
               ` : ''}
             </div>
             <div class="card-empreendimento__conteudo">
