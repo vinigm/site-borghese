@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça nossos empreendimentos - Apartamentos de alto padrão em Porto Alegre">
+  <title>Borghese - Nossos Empreendimentos</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../src/styles/main.css">
+</head>
+<body class="pagina-empreendimentos">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__container">
+      <a href="../index.html" class="header__logo">
+        <img src="../assets/images/borghese-logo.png" alt="Borghese Assessoria Imobiliária" class="header__logo-img">
+      </a>
+
+      <nav class="header__nav">
+        <ul class="nav__lista">
+          <li class="nav__item">
+            <a href="../index.html" class="nav__link">Início</a>
+          </li>
+          <li class="nav__item">
+            <a href="imoveis.html" class="nav__link">Imóveis</a>
+          </li>
+          <li class="nav__item">
+            <a href="sobre.html" class="nav__link">Sobre</a>
+          </li>
+          <li class="nav__item">
+            <a href="contato.html" class="nav__link">Contato</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__cta oculto-mobile">
+        <a 
+          href="https://wa.me/5551993016930?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20mais%20informações." 
+          target="_blank" 
+          rel="noopener"
+          class="botao botao--whatsapp"
+          style="margin-right: 0.75rem;"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          WhatsApp
+        </a>
+        <a href="contato.html" class="botao botao--primario">
+          Fale Conosco
+        </a>
+      </div>
+
+      <button class="header__menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- BANNER -->
+  <section class="banner-pagina">
+    <div class="banner-pagina__container">
+      <h1 class="banner-pagina__titulo">Nossos Empreendimentos</h1>
+      <nav class="banner-pagina__breadcrumb">
+        <a href="../index.html">Início</a>
+        <span class="banner-pagina__breadcrumb-separador">→</span>
+        <span>Empreendimentos</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- INTRODUÇÃO -->
+  <section class="secao">
+    <div class="container container--estreito">
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--cor-texto-principal);">
+          Encontre o Empreendimento Ideal
+        </h2>
+        <p style="font-size: 1.125rem; color: var(--cor-texto-secundario); max-width: 700px; margin: 0 auto;">
+          Selecionamos os melhores empreendimentos de Porto Alegre, com localização privilegiada, 
+          infraestrutura completa e acabamento de primeira qualidade.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTA DE EMPREENDIMENTOS -->
+  <section class="secao secao--cinza">
+    <div class="container">
+      <div class="empreendimentos-grid" id="empreendimentos-lista">
+        <!-- Empreendimentos serão carregados via JavaScript -->
+        <div class="loading-container">
+          <div class="loading-spinner loading-spinner--large"></div>
+          <p style="margin-top: 1rem;">Carregando empreendimentos...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-section__container">
+      <h2 class="cta-section__titulo">Quer Mais Informações?</h2>
+      <p class="cta-section__texto">
+        Entre em contato conosco e descubra todas as vantagens de investir 
+        em um dos nossos empreendimentos.
+      </p>
+      <div class="cta-section__botoes">
+        <a href="contato.html" class="botao botao--primario botao--grande">
+          Fale Conosco
+        </a>
+        <a href="https://wa.me/5551993016930?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20os%20empreendimentos." target="_blank" rel="noopener" class="botao botao--whatsapp botao--grande">
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__conteudo">
+        <div class="footer__secao footer__sobre">
+          <h3 class="footer__logo">🏠 Borghese</h3>
+          <p>
+            A Borghese é sua parceira ideal na busca pelo imóvel dos sonhos.
+          </p>
+          <div class="footer__redes-sociais">
+            <a href="#" class="footer__rede-social" aria-label="Facebook">📘</a>
+            <a href="#" class="footer__rede-social" aria-label="Instagram">📷</a>
+            <a href="#" class="footer__rede-social" aria-label="LinkedIn">💼</a>
+            <a href="#" class="footer__rede-social" aria-label="YouTube">▶️</a>
+          </div>
+        </div>
+
+        <div class="footer__secao">
+          <h3>Links Rápidos</h3>
+          <nav class="footer__links-lista">
+            <a href="../index.html">→ Início</a>
+            <a href="imoveis.html">→ Imóveis</a>
+            <a href="sobre.html">→ Sobre Nós</a>
+            <a href="contato.html">→ Contato</a>
+          </nav>
+        </div>
+
+        <div class="footer__secao">
+          <h3>Contato</h3>
+          <div class="footer__contato-item">
+            <span>📍</span>
+            <div>
+              <strong>Endereço</strong>
+              <p>Av. Clemenciano Barnasque, 386 - Porto Alegre/RS</p>
+            </div>
+          </div>
+          <div class="footer__contato-item">
+            <span>📞</span>
+            <div>
+              <strong>WhatsApp</strong>
+              <p><a href="https://wa.me/5551993016930" target="_blank" rel="noopener">(51) 99301-6930</a></p>
+            </div>
+          </div>
+          <div class="footer__contato-item">
+            <span>📧</span>
+            <div>
+              <strong>Email</strong>
+              <p><a href="mailto:contato@borghese.com.br">contato@borghese.com.br</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__copyright">
+          © 2026 Borghese Assessoria Imobiliária. Todos os direitos reservados.
+        </div>
+        <nav class="footer__bottom-links">
+          <a href="#">Política de Privacidade</a>
+          <a href="#">Termos de Uso</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script type="module">
+    import carregadorDados from '../src/scripts/utils/carregador-dados.js';
+
+    async function carregarEmpreendimentos() {
+      try {
+        const empreendimentos = await carregadorDados.carregarEmpreendimentos();
+        const container = document.getElementById('empreendimentos-lista');
+        
+        if (!container) return;
+
+        // Filtra apenas disponíveis
+        const disponiveis = empreendimentos.filter(emp => emp.disponivel);
+
+        if (disponiveis.length === 0) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 3rem; grid-column: 1 / -1;">
+              <h3 style="font-size: 1.5rem; color: var(--cor-texto-secundario); margin-bottom: 1rem;">
+                Nenhum empreendimento disponível no momento
+              </h3>
+              <p style="color: var(--cor-texto-claro);">
+                Entre em contato conosco para mais informações sobre próximos lançamentos.
+              </p>
+            </div>
+          `;
+          return;
+        }
+
+        const resolverCaminhoImagem = (src) => {
+          if (!src) return '../assets/images/placeholder.jpg';
+          if (src.startsWith('http') || src.startsWith('/') || src.startsWith('../') || src.startsWith('./')) {
+            return src;
+          }
+          return `../${src}`;
+        };
+
+        const formatarStatus = (status) => {
+          const statusMap = {
+            'em-construcao': 'Em Construção',
+            'lancamento': 'Lançamento',
+            'pronto-para-morar': 'Pronto para Morar',
+            'na-planta': 'Na Planta'
+          };
+          return statusMap[status] || status;
+        };
+
+        const html = disponiveis.map(emp => `
+          <div class="card-empreendimento" onclick="window.location.href='empreendimento.html?id=${emp.id}'">
+            <div class="card-empreendimento__imagem">
+              <img src="${resolverCaminhoImagem(emp.imagens?.[0])}" alt="${emp.nome}" loading="lazy">
+              ${emp.caracteristicas?.status ? `
+                <span class="card-empreendimento__badge">${formatarStatus(emp.caracteristicas.status)}</span>
+              ` : ''}
+              ${emp.destaque ? `
+                <span class="card-empreendimento__badge card-empreendimento__badge--destaque">⭐ Destaque</span>
+              ` : ''}
+            </div>
+            <div class="card-empreendimento__conteudo">
+              <h3 class="card-empreendimento__titulo">${emp.nome}</h3>
+              <div class="card-empreendimento__endereco">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>${emp.endereco.bairro}, ${emp.endereco.cidade}</span>
+              </div>
+              <p class="card-empreendimento__descricao">${emp.descricao}</p>
+              <div class="card-empreendimento__footer">
+                <div class="card-empreendimento__info-grid">
+                  ${emp.caracteristicas?.unidades ? `
+                    <div class="card-empreendimento__info-item">
+                      <strong>${emp.caracteristicas.unidades}</strong>
+                      <span>unidades</span>
+                    </div>
+                  ` : ''}
+                  ${emp.caracteristicas?.torres ? `
+                    <div class="card-empreendimento__info-item">
+                      <strong>${emp.caracteristicas.torres}</strong>
+                      <span>${emp.caracteristicas.torres === 1 ? 'torre' : 'torres'}</span>
+                    </div>
+                  ` : ''}
+                  ${emp.caracteristicas?.andares ? `
+                    <div class="card-empreendimento__info-item">
+                      <strong>${emp.caracteristicas.andares}</strong>
+                      <span>andares</span>
+                    </div>
+                  ` : ''}
+                </div>
+                <span class="card-empreendimento__cta">Ver detalhes →</span>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        container.innerHTML = html;
+      } catch (erro) {
+        console.error('Erro ao carregar empreendimentos:', erro);
+        const container = document.getElementById('empreendimentos-lista');
+        if (container) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 3rem; grid-column: 1 / -1;">
+              <h3 style="font-size: 1.5rem; color: var(--cor-texto-secundario);">
+                Erro ao carregar empreendimentos
+              </h3>
+              <p style="color: var(--cor-texto-claro); margin-top: 1rem;">
+                Tente novamente mais tarde ou entre em contato conosco.
+              </p>
+            </div>
+          `;
+        }
+      }
+    }
+
+    // Carrega empreendimentos
+    carregarEmpreendimentos();
+  </script>
+  <script type="module" src="../src/scripts/main.js"></script>
+</body>
+</html>
