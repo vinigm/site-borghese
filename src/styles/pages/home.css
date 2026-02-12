@@ -474,7 +474,28 @@
   }
 
   .categorias__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--espacamento-md);
+  }
+
+  .categoria-card {
+    padding: var(--espacamento-md);
+  }
+
+  .categoria-card__icone {
+    width: 48px;
+    height: 48px;
+    font-size: var(--texto-2xl);
+    margin-bottom: var(--espacamento-sm);
+  }
+
+  .categoria-card__titulo {
+    font-size: var(--texto-base);
+    margin-bottom: var(--espacamento-xs);
+  }
+
+  .categoria-card__quantidade {
+    font-size: var(--texto-xs);
   }
 
   .cta-section__botoes {
@@ -483,5 +504,74 @@
 
   .cta-section__botoes .botao {
     width: 100%;
+  }
+
+  /* === SCROLL HORIZONTAL PARA EMPREENDIMENTOS NO MOBILE === */
+  .empreendimentos-grid {
+    display: flex !important;
+    grid-template-columns: none !important;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--espacamento-lg) !important;
+    padding-bottom: var(--espacamento-md);
+    margin-left: calc(-1 * var(--espacamento-lg));
+    margin-right: calc(-1 * var(--espacamento-lg));
+    padding-left: var(--espacamento-lg);
+    padding-right: var(--espacamento-lg);
+  }
+
+  .empreendimentos-grid .card-empreendimento {
+    flex: 0 0 85% !important; /* Cada card ocupa 85% da largura */
+    min-width: 280px !important;
+    max-width: 400px !important;
+    scroll-snap-align: start;
+  }
+
+  /* === SCROLL HORIZONTAL PARA IMÓVEIS NO MOBILE === */
+  .grid-imoveis {
+    display: flex !important;
+    grid-template-columns: none !important;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--espacamento-lg) !important;
+    padding-bottom: var(--espacamento-md);
+    margin-left: calc(-1 * var(--espacamento-lg));
+    margin-right: calc(-1 * var(--espacamento-lg));
+    padding-left: var(--espacamento-lg);
+    padding-right: var(--espacamento-lg);
+  }
+
+  .grid-imoveis .card-imovel {
+    flex: 0 0 85% !important;
+    min-width: 280px !important;
+    max-width: 400px !important;
+    scroll-snap-align: start;
+  }
+
+  /* Estiliza a barra de rolagem no mobile */
+  .empreendimentos-grid::-webkit-scrollbar,
+  .grid-imoveis::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .empreendimentos-grid::-webkit-scrollbar-track,
+  .grid-imoveis::-webkit-scrollbar-track {
+    background: var(--cor-fundo-escuro);
+    border-radius: 4px;
+  }
+
+  .empreendimentos-grid::-webkit-scrollbar-thumb,
+  .grid-imoveis::-webkit-scrollbar-thumb {
+    background: var(--cor-primaria);
+    border-radius: 4px;
+  }
+
+  .empreendimentos-grid::-webkit-scrollbar-thumb:hover,
+  .grid-imoveis::-webkit-scrollbar-thumb:hover {
+    background: var(--cor-primaria-hover);
   }
 }
