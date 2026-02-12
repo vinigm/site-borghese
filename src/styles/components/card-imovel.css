@@ -58,17 +58,17 @@
 }
 
 .card-imovel__badge--destaque {
-  background-color: var(--cor-acento);
+  background-color: rgba(245, 158, 11, 0.6);
   color: var(--cor-fundo);
 }
 
 .card-imovel__badge--tipo {
-  background-color: var(--cor-primaria);
+  background-color: rgba(37, 99, 235, 0.6);
   color: var(--cor-fundo);
 }
 
 .card-imovel__badge--transacao {
-  background-color: var(--cor-secundaria);
+  background-color: rgba(16, 185, 129, 0.6);
   color: var(--cor-fundo);
 }
 
@@ -276,22 +276,130 @@
   user-select: none;
 }
 
+/* Oculta botões overlay mobile no desktop */
+.card-imovel__acoes-mobile {
+  display: none;
+}
+
 /* === RESPONSIVIDADE === */
 @media (max-width: 768px) {
   .grid-imoveis {
     grid-template-columns: 1fr;
-    gap: var(--espacamento-lg);
+    gap: var(--espacamento-md);
+  }
+
+  .card-imovel__imagem-container {
+    height: 300px;
+  }
+
+  .card-imovel__badges {
+    top: 8px;
+    left: 8px;
+    gap: 6px;
+  }
+
+  .card-imovel__badge {
+    padding: 2px 6px;
+    font-size: 10px;
+    letter-spacing: 0.2px;
+  }
+
+  .card-imovel__favorito {
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .card-imovel__conteudo {
+    padding: var(--espacamento-md);
+  }
+
+  .card-imovel__preco {
+    font-size: var(--texto-xl);
+    margin-bottom: 2px;
+  }
+
+  .card-imovel__titulo {
+    font-size: var(--texto-xl);
+    margin-bottom: var(--espacamento-xs);
+  }
+
+  .card-imovel__endereco {
+    font-size: var(--texto-xs);
+    margin-bottom: var(--espacamento-sm);
   }
 
   .card-imovel__caracteristicas {
-    gap: var(--espacamento-md);
+    gap: var(--espacamento-sm);
+    padding-top: var(--espacamento-sm);
   }
 
   .card-imovel__caracteristica {
     font-size: var(--texto-xs);
+    gap: 4px;
+  }
+
+  .card-imovel__caracteristica svg,
+  .card-imovel__caracteristica i {
+    width: 14px;
+    height: 14px;
   }
 
   .card-imovel__footer {
     flex-direction: column;
+  }
+
+  /* Oculta footer no mobile */
+  .card-imovel__footer {
+    display: none !important;
+  }
+
+  /* Mostra botões overlay nas imagens */
+  .card-imovel__acoes-mobile {
+    display: flex !important;
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    justify-content: space-between;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .card-imovel__acao-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 6px 10px;
+    height: 28px;
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    pointer-events: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .card-imovel__acao-mobile--whatsapp {
+    background: rgba(37, 211, 102, 0.95);
+  }
+
+  .card-imovel__acao-mobile--detalhes {
+    background: rgba(37, 99, 235, 0.6);
+  }
+
+  .card-imovel__acao-texto {
+    display: inline;
+  }
+
+  .card-imovel__acao-mobile:active {
+    transform: scale(0.95);
   }
 }

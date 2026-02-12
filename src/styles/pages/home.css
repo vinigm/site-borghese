@@ -303,6 +303,12 @@
   color: var(--cor-primaria-escura);
 }
 
+/* Oculta botões overlay mobile no desktop */
+.card-imovel__acoes-mobile,
+.card-empreendimento__acoes-mobile {
+  display: none;
+}
+
 .secao__header {
   text-align: center;
   margin-bottom: var(--espacamento-2xl);
@@ -529,6 +535,21 @@
     scroll-snap-align: start;
   }
 
+  /* Ajustes de imagem e badge para mobile */
+  .card-empreendimento__imagem {
+    height: 320px !important;
+  }
+
+  .card-empreendimento__badge {
+    top: 8px !important;
+    left: 8px !important;
+    padding: 4px 8px !important;
+    background-color: rgba(37, 99, 235, 0.6) !important;
+    font-size: 10px !important;
+    border-radius: 4px !important;
+    letter-spacing: 0.3px !important;
+  }
+
   /* === SCROLL HORIZONTAL PARA IMÓVEIS NO MOBILE === */
   .grid-imoveis {
     display: flex !important;
@@ -573,5 +594,66 @@
   .empreendimentos-grid::-webkit-scrollbar-thumb:hover,
   .grid-imoveis::-webkit-scrollbar-thumb:hover {
     background: var(--cor-primaria-hover);
+  }
+
+  /* === BOTÕES OVERLAY MOBILE === */
+  /* Oculta footer dos cards no mobile */
+  .card-imovel__footer,
+  .card-empreendimento__footer {
+    display: none !important;
+  }
+
+  /* Botões de ação overlay nas imagens */
+  .card-imovel__acoes-mobile,
+  .card-empreendimento__acoes-mobile {
+    display: flex !important;
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    justify-content: space-between;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .card-imovel__acao-mobile,
+  .card-empreendimento__acao-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 6px 10px;
+    height: 28px;
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    pointer-events: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .card-imovel__acao-mobile--whatsapp,
+  .card-empreendimento__acao-mobile--whatsapp {
+    background: rgba(37, 211, 102, 0.6);
+  }
+
+  .card-imovel__acao-mobile--detalhes,
+  .card-empreendimento__acao-mobile--detalhes {
+    background: rgba(37, 99, 235, 0.6);
+  }
+
+  .card-imovel__acao-texto,
+  .card-empreendimento__acao-texto {
+    display: inline;
+  }
+
+  .card-imovel__acao-mobile:active,
+  .card-empreendimento__acao-mobile:active {
+    transform: scale(0.95);
   }
 }
